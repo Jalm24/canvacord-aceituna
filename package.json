@@ -31,7 +31,7 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "@canvacord/assets": "git+https://github.com/Jalm24/canvacord-assets-aceituna.git",
+    "@canvacord/assets": "https://github.com/Jalm24/canvacord-assets-aceituna",
     "@canvacord/emoji-parser": "^1.0.1",
     "canvas": "^2.8.0",
     "gifencoder": "^2.0.1",
