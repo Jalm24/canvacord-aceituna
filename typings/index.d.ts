@@ -352,6 +352,20 @@ declare module "canvacord" {
             dark?: boolean;
         }): Promise<Buffer>;
         /**
+         * <p>DISCORD text globe</p>
+         * @param ops - <p>dglobe text options</p>
+         * @param [ops.username] - <p>dglobe author username</p>
+         * @param [ops.content] - <p>text</p>
+         * @param [ops.avatar] - <p>Avatar source</p>
+         * @param [ops.dark = false] - <p>Dark mode?</p>
+         */
+        static dglobe(ops: {
+            username?: string;
+            content?: string;
+            avatar?: string | Buffer;
+            dark?: boolean;
+        }): Promise<Buffer>;
+        /**
          * <p>Oh Shit!</p>
          * @param image - <p>Source image</p>
          */
