@@ -1202,6 +1202,53 @@ class Canvacord {
 
         return canvas.toBuffer();
     }
+    
+     /**
+     * discord text globe
+     * @param {object} ops discord text globe options
+     * @param {string} [ops.username] globe author username
+     * @param {string} [ops.content] The text
+     * @param {string|Buffer} [ops.avatar] Avatar source
+     * @param {boolean} [ops.dark=false] Dark mode?
+     * @returns {Promise<Buffer>}
+     */
+    static async dglobe(ops = { username: null, content: null, avatar: null, dark: false }) {
+        if (!ops.username || typeof ops.username !== "string") throw new Error("Username may not be empty!");
+        if (!ops.content || typeof ops.content !== "string") throw new Error("Content may not be empty!");
+        if (!ops.avatar) throw new Error("Avatar source may not be empty!");
+        ops.dark = !!ops.dark;
+
+        await this.__wait();
+        const bg = await Canvas.loadImage(!ops.dark ? Canvacord.assets.image.get("DGLOBE") : await Canvacord.invert(Canvacord.assets.image.get("DGLOBE")));
+        const avatar = await Canvas.loadImage(await Canvacord.circle(ops.avatar));
+
+        const canvas = Canvas.createCanvas(bg.width, bg.height);
+        const ctx = canvas.getContext("2d");
+
+        ctx.drawImage(bg, -3, -3, canvas.width + 6, canvas.height + 6);
+        ctx.drawImage(avatar, 17, 33, 52, 52);
+
+        let time = Math.floor(Math.random() * (59 - 1)) + 1;
+        time = `${time + (time == 1 ? " minute" : " minutes")} ago`;
+
+        const username = Util.shorten(ops.username, 21);
+        const comment = Util.shorten(ops.content, 60);
+
+        ctx.font = "20px Roboto";
+        ctx.fillStyle = ops.dark ? "#FFFFFF" : "#000000";
+        ctx.fillText(username, 92, 50);
+        
+        ctx.font = "16px Roboto";
+        ctx.fillStyle = "#909090";
+        ctx.fillText(time, ctx.measureText(username).width + 140, 50);
+
+        ctx.font = "18px Roboto";
+        ctx.fillStyle = ops.dark ? "#FFFFFF" : "#000000";
+        await Util.renderEmoji(ctx, comment, 92, 80);
+
+        return canvas.toBuffer();
+    }
+
 
     /**
      * Oh Shit!
