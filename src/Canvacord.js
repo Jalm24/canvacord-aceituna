@@ -1238,7 +1238,7 @@ class Canvacord {
 
         ctx.font = "20px Roboto";
         ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
-        ctx.fillText(username, 92, 60);
+        ctx.fillText(username, 92, 50);
         
         ctx.font = "16px Roboto";
         ctx.fillStyle = "#909090";
@@ -1250,7 +1250,7 @@ class Canvacord {
         
         ctx.font = "18px Roboto";
         ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
-        await Util.renderEmoji(ctx, comment1, 92, 80);
+        await Util.renderEmoji(ctx, comment1, 92, 95);
 
         return canvas.toBuffer();
     }
