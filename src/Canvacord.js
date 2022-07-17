@@ -1229,13 +1229,13 @@ class Canvacord {
         ctx.drawImage(avatar, 17, 33, 52, 52);
 
         let time = Math.floor(Math.random() * (59 - 1)) + 1;
-        time = `${time + (time == 1 ? " minute" : " minutes")} ago`;
+        time = `${time + (time == 1 ? " minuto" : " minutos")} ago`;
 
         const username = Util.shorten(ops.username, 21);
         const comment = Util.shorten(ops.content, 60);
 
         ctx.font = "20px Roboto";
-        ctx.fillStyle = ops.dark ? "#FFFFFF" : "#000000";
+        ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
         ctx.fillText(username, 92, 50);
         
         ctx.font = "16px Roboto";
@@ -1243,7 +1243,7 @@ class Canvacord {
         ctx.fillText(time, ctx.measureText(username).width + 140, 50);
 
         ctx.font = "18px Roboto";
-        ctx.fillStyle = ops.dark ? "#FFFFFF" : "#000000";
+        ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
         await Util.renderEmoji(ctx, comment, 92, 80);
 
         return canvas.toBuffer();
