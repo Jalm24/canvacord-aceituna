@@ -1208,11 +1208,12 @@ class Canvacord {
      * @param {object} ops discord text globe options
      * @param {string} [ops.username] globe author username
      * @param {string} [ops.content] The text
+     * @param {string} [ops.content1] la segunda linea de texto
      * @param {string|Buffer} [ops.avatar] Avatar source
      * @param {boolean} [ops.dark=false] Dark mode?
      * @returns {Promise<Buffer>}
      */
-    static async dglobe(ops = { username: null, content: null, avatar: null, dark: false }) {
+    static async dglobe(ops = { username: null, content: null, content1: null, avatar: null, dark: false }) {
         if (!ops.username || typeof ops.username !== "string") throw new Error("Username may not be empty!");
         if (!ops.content || typeof ops.content !== "string") throw new Error("Content may not be empty!");
         if (!ops.avatar) throw new Error("Avatar source may not be empty!");
@@ -1233,10 +1234,11 @@ class Canvacord {
 
         const username = Util.shorten(ops.username, 21);
         const comment = Util.shorten(ops.content, 60);
+        const comment1 = Util.shorten(ops.content1, 60);
 
         ctx.font = "20px Roboto";
         ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
-        ctx.fillText(username, 92, 50);
+        ctx.fillText(username, 92, 60);
         
         ctx.font = "16px Roboto";
         ctx.fillStyle = "#909090";
@@ -1245,6 +1247,10 @@ class Canvacord {
         ctx.font = "18px Roboto";
         ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
         await Util.renderEmoji(ctx, comment, 92, 80);
+        
+        ctx.font = "18px Roboto";
+        ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
+        await Util.renderEmoji(ctx, comment1, 92, 80);
 
         return canvas.toBuffer();
     }
