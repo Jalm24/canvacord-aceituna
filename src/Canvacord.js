@@ -1246,11 +1246,11 @@ class Canvacord {
 
         ctx.font = "18px Roboto";
         ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
-        await Util.renderEmoji(ctx, comment, 92, 80);
+        await Util.renderEmoji(ctx, comment, 92, 70);
         
         ctx.font = "18px Roboto";
         ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
-        await Util.renderEmoji(ctx, comment1, 92, 95);
+        await Util.renderEmoji(ctx, comment1, 92, 90);
 
         return canvas.toBuffer();
     }
