@@ -1232,9 +1232,9 @@ class Canvacord {
         let time = Math.floor(Math.random() * (59 - 1)) + 1;
         time = `${time + (time == 1 ? " minuto" : " minutos")} ago`;
 
-        const username = Util.shorten(ops.username, 21);
-        const comment = Util.shorten(ops.content, 60);
-        const comment1 = Util.shorten(ops.content1, 60);
+        const username = Util.shorten(ops.username, 25);
+        const comment = Util.shorten(ops.content, 65);
+        const comment1 = Util.shorten(ops.content1, 65);
 
         ctx.font = "20px Roboto";
         ctx.fillStyle = ops.dark ? "#000000" : "#FFFFFF";
