@@ -356,12 +356,14 @@ declare module "canvacord" {
          * @param ops - <p>dglobe text options</p>
          * @param [ops.username] - <p>dglobe author username</p>
          * @param [ops.content] - <p>text</p>
+         * @param [ops.content1] - <p>text line 2</p>
          * @param [ops.avatar] - <p>Avatar source</p>
          * @param [ops.dark = false] - <p>Dark mode?</p>
          */
         static dglobe(ops: {
             username?: string;
             content?: string;
+            content1?: string;
             avatar?: string | Buffer;
             dark?: boolean;
         }): Promise<Buffer>;
